@@ -1,0 +1,31 @@
+FROM		ubuntu
+RUN		echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
+RUN		apt-get update
+
+# node.js
+RUN		apt-get install -y python-software-properties python g++ make
+RUN		add-apt-repository -y ppa:chris-lea/node.js-legacy
+RUN		add-apt-repository -y ppa:chris-lea/node.js
+RUN		apt-get update
+RUN		apt-get install -y nodejs=0.8.26-1chl1~precise1
+RUN		apt-get install -y npm
+
+# essentials
+RUN		apt-get install -y build-essential openssh-server supervisor vim sudo git wget
+
+# java
+RUN		add-apt-repository ppa:webupd8team/java
+RUN		apt-get update
+RUN		echo oracle-jdk7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+RUN		apt-get install -y oracle-jdk7-installer
+ENV		JAVA_HOME /usr/lib/jvm/java-7-oracle
+
+RUN             mkdir -p /var/run/sshd
+RUN             mkdir -p /var/log/supervisor
+
+RUN		echo "root:root" | chpasswd
+ADD		supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+EXPOSE		22 8080
+
+CMD		["/usr/bin/supervisord", "-n"]

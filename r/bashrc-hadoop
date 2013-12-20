@@ -1,0 +1,20 @@
+#Hadoop variables
+export JAVA_HOME=/usr/lib/jvm/jdk/
+export HADOOP_INSTALL=/usr/local/hadoop
+export PATH=$PATH:$HADOOP_INSTALL/bin
+export PATH=$PATH:$HADOOP_INSTALL/sbin
+export HADOOP_MAPRED_HOME=$HADOOP_INSTALL
+export HADOOP_COMMON_HOME=$HADOOP_INSTALL
+export HADOOP_HDFS_HOME=$HADOOP_INSTALL
+export YARN_HOME=$HADOOP_INSTALL
+###end of paste
+
+###additional hadoop variables for starting shell
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_INSTALL/lib/native
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_INSTALL/lib"
+###end of additional hadoop variables
+
+###mahout
+export MAHOUT_HOME=/usr/local/mahout
+export PATH=$PATH:$MAHOUT_HOME/bin
+###end of mahout

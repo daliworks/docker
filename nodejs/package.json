@@ -1,0 +1,12 @@
+{
+  "name": "docker-nodejs-hello",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Node.js Hwllo World app on Ubuntu using docker",
+  "author": "Dowan Kim <forty4@gmail.com>",
+  "dependencies": {
+    "express": "3.x",
+    "zookeeper": "3.4.x",
+    "async": "0.2.9"
+  }
+}
